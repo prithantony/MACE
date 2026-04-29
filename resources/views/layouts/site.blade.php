@@ -30,17 +30,21 @@
                 <a class="font-bold text-[#12351d] transition hover:text-[#006b12]" href="{{ route('departments') }}">Departments</a>
                 <a class="font-bold text-[#12351d] transition hover:text-[#006b12]" href="{{ route('gallery') }}">Gallery</a>
                 <a class="font-bold text-[#12351d] transition hover:text-[#006b12]" href="{{ route('news') }}">Latest News</a>
-                <div class="group relative">
-                    <button class="font-bold text-[#12351d] transition hover:text-[#006b12]">Login</button>
-                    <div class="invisible absolute right-0 top-full w-56 translate-y-3 rounded-2xl bg-white p-2 opacity-0 shadow-2xl ring-1 ring-green-900/10 transition group-hover:visible group-hover:translate-y-2 group-hover:opacity-100">
+                <div class="group relative" data-login-menu>
+                    <button class="font-bold text-[#12351d] transition hover:text-[#006b12]" type="button" aria-haspopup="true" aria-expanded="false" data-login-toggle>Login</button>
+                    <div class="invisible absolute right-0 top-full z-50 w-60 translate-y-3 overflow-hidden rounded-2xl bg-white opacity-0 shadow-2xl ring-1 ring-green-900/10 transition group-hover:visible group-hover:translate-y-2 group-hover:opacity-100 data-[open=true]:visible data-[open=true]:translate-y-2 data-[open=true]:opacity-100" data-login-dropdown>
+                        <div class="h-2 bg-[#006b12]"></div>
+                        <div class="p-2">
                         @forelse($sitePortalLinks as $portalLink)
-                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#e8f5e9] hover:text-[#006b12]" href="{{ $portalLink->url }}">{{ $portalLink->label }}</a>
+                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white focus:bg-[#006b12] focus:text-white focus:outline-none" href="{{ $portalLink->url }}">{{ $portalLink->label }}</a>
                         @empty
-                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#e8f5e9]" href="{{ route('portal.staff') }}">Staff Portal</a>
-                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#e8f5e9]" href="{{ route('portal.student') }}">Student Portal</a>
-                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#e8f5e9]" href="{{ route('portal.lms') }}">LMS Portal</a>
-                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#e8f5e9]" href="{{ route('portal.exam') }}">Exam Portal</a>
+                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white focus:bg-[#006b12] focus:text-white focus:outline-none" href="{{ route('portal.staff') }}">Staff Portal</a>
+                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white focus:bg-[#006b12] focus:text-white focus:outline-none" href="{{ route('portal.student') }}">Student Portal</a>
+                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white focus:bg-[#006b12] focus:text-white focus:outline-none" href="{{ route('portal.lms') }}">LMS Portal</a>
+                            <a class="block rounded-xl px-4 py-3 text-sm font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white focus:bg-[#006b12] focus:text-white focus:outline-none" href="{{ route('portal.exam') }}">Exam Portal</a>
                         @endforelse
+                        </div>
+                        <div class="h-1.5 bg-[#f4c400]"></div>
                     </div>
                 </div>
                 <a class="rounded-full bg-[#006b12] px-5 py-3 text-sm font-black text-white shadow-lg shadow-green-900/20 transition hover:-translate-y-0.5 hover:bg-[#004b0d]" href="{{ route('contact') }}#enquiry-form">Apply Now</a>
@@ -53,6 +57,17 @@
                 <a class="font-bold text-[#12351d]" href="{{ route('departments') }}">Departments</a>
                 <a class="font-bold text-[#12351d]" href="{{ route('gallery') }}">Gallery</a>
                 <a class="font-bold text-[#12351d]" href="{{ route('news') }}">Latest News</a>
+                <div class="grid gap-2 rounded-2xl bg-[#f7fbf6] p-3 ring-1 ring-green-900/10">
+                    <span class="text-xs font-black uppercase tracking-[0.18em] text-[#006b12]">Login</span>
+                    @forelse($sitePortalLinks as $portalLink)
+                        <a class="rounded-xl px-3 py-2 font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white" href="{{ $portalLink->url }}">{{ $portalLink->label }}</a>
+                    @empty
+                        <a class="rounded-xl px-3 py-2 font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white" href="{{ route('portal.staff') }}">Staff Portal</a>
+                        <a class="rounded-xl px-3 py-2 font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white" href="{{ route('portal.student') }}">Student Portal</a>
+                        <a class="rounded-xl px-3 py-2 font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white" href="{{ route('portal.lms') }}">LMS Portal</a>
+                        <a class="rounded-xl px-3 py-2 font-bold text-[#12351d] transition hover:bg-[#006b12] hover:text-white" href="{{ route('portal.exam') }}">Exam Portal</a>
+                    @endforelse
+                </div>
                 <a class="font-bold text-[#006b12]" href="{{ route('contact') }}#enquiry-form">Apply Now</a>
             </div>
         </div>

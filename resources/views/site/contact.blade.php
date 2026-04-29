@@ -1,9 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
-<section class="bg-[#f7fbf6] py-20">
-    <x-section-heading eyebrow="Contact" title="Contact Us" body="Reach Makeni College of Education Zambia for admissions and general enquiries." />
-</section>
+<x-page-banner image="images/Contactus.png" href="#enquiry-form" alt="Contact Makeni College of Education Zambia" />
 
 <section class="py-20">
     <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">

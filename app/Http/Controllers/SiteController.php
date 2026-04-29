@@ -93,11 +93,19 @@ class SiteController extends Controller
             'exam' => 'Online Exam Portal',
         ];
 
+        $images = [
+            'staff' => 'images/Staff_Portal.png',
+            'student' => 'images/Student_Portal.png',
+            'lms' => 'images/LMS_Portal.png',
+            'exam' => 'images/Exam_Portal.png',
+        ];
+
         abort_unless(array_key_exists($portal, $labels), 404);
 
         return view('site.portal', [
             'title' => $labels[$portal],
             'settingTitle' => Setting::where('key', "portal_{$portal}_label")->value('value'),
+            'portalImage' => $images[$portal],
         ]);
     }
 }

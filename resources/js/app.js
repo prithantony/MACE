@@ -18,6 +18,34 @@ menuButton?.addEventListener('click', () => {
     menuPanel?.classList.toggle('hidden');
 });
 
+const loginMenu = document.querySelector('[data-login-menu]');
+const loginToggle = document.querySelector('[data-login-toggle]');
+const loginDropdown = document.querySelector('[data-login-dropdown]');
+
+const closeLoginMenu = () => {
+    loginDropdown?.setAttribute('data-open', 'false');
+    loginToggle?.setAttribute('aria-expanded', 'false');
+};
+
+loginToggle?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isOpen = loginDropdown?.getAttribute('data-open') === 'true';
+    loginDropdown?.setAttribute('data-open', isOpen ? 'false' : 'true');
+    loginToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+});
+
+document.addEventListener('click', (event) => {
+    if (!loginMenu?.contains(event.target)) {
+        closeLoginMenu();
+    }
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeLoginMenu();
+    }
+});
+
 const slides = [...document.querySelectorAll('[data-hero-slide]')];
 let activeSlide = 0;
 
